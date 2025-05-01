@@ -19,6 +19,27 @@
   }
 }
 
+.btn {
+  padding-top: 10px;
+  padding-right: 25px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  gap: 10px;
+  border-radius: 10px;
+  background: #0063B0;
+  color: white;
+}
 
+.btn:hover {
+  opacity: 0.5;
+}
+
+input {
+  opacity: 0.3;
+}
+
+input:hover {
+  opacity: 1;
+}
 
 body {}

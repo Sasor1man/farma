@@ -1,0 +1,14 @@
+header .headerTop div > svg {
+  width: 20;
+  height: 20;
+  margin-right: 16px;
+}
+header .headerBottom div > svg {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+header .headerBottom button > svg {
+  width: 15.7497291565;
+  height: 15.7501773834;
+}/*# sourceMappingURL=style.css.map */
