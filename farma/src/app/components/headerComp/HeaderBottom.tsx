@@ -19,7 +19,7 @@ class HeaderBottom extends React.Component<
     return (
       <div className="h-[58] flex justify-between items-center headerBottom">
         <Image src={CompImg} alt="" width={119} height={58} />
-        <button className="w-[110px] h-[41px] btn">Каталог</button>
+        <button className="w-[110px] h-[41px] btn btn-primary">Каталог</button>
         <div className="w-[636px] h-[41px] flex">
           <input
             type="text"

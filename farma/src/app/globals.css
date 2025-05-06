@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,7 +20,7 @@
   }
 }
 
-.btn {
+.btn-loop {
   padding-top: 10px;
   padding-right: 25px;
   padding-bottom: 10px;
@@ -30,7 +31,7 @@
   color: white;
 }
 
-.btn:hover {
+.btn-loop:hover {
   opacity: 0.5;
 }
 
