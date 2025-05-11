@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Component } from "react";
-import * as Svgs from "../../imgs/header/Svgs";
+import * as Svgs from "../../../../public/imgs/header/Svgs";
 
 const linksArr: string[] = ["О компании", "Новости", "Статьи", "Контакты"];
 

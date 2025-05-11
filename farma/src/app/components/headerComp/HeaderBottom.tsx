@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Component } from "react";
 import Image from "next/image";
-import CompImg from "../../imgs/header/image 1.png";
-import * as Svgs from "../../imgs/header/Svgs";
+import CompImg from "../../../../public/imgs/header/image 1.png";
+import * as Svgs from "../../../../public/imgs/header/Svgs";
 
 const headerClassRight = () => `flex items-center justify-between`;
 

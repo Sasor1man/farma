@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
 
+@tailwindcss base;
+@tailwindcss components;
+@tailwindcss utilities;
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -35,6 +40,21 @@
   opacity: 0.5;
 }
 
+.btn-primary {
+  background-color: #0063B0;
+  border-radius: 10px;
+  padding: 10px 25px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
 input {
   opacity: 0.3;
 }
@@ -43,4 +63,22 @@ input:hover {
   opacity: 1;
 }
 
-body {}
+ul {
+  list-style: url(../../public/imgs/Rectangle\ 31.svg);
+}
+
+ul li {
+  padding-left: 15px;
+  height: 24px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+ul li::marker {
+  height: 8px;
+  width: 8px;
+}
+
+body {
+  font-family: var(--font-stolzl);
+}
