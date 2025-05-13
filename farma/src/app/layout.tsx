@@ -1,6 +1,5 @@
 // import { Geist, Geist_Mono } from "next/font/google";
-// import "./styles/bootstrap.css";
-import localFont from 'next/font/local'
+import localFont from "next/font/local";
 import "./globals.css";
 import "./styles/header/style.css";
 import "./styles/footer/style.css";
@@ -20,17 +19,10 @@ import Footer from "./components/footer";
 // });
 
 const stolzlFont = localFont({
-  src: [
-    {
-      path: './fonts/Stolzl/stolzl_book.otf',
-      weight: '400',
-      style: 'normal',
-    },
-    
-  ],
-  display: 'swap',
-  variable: '--font-stolzl',
-})
+  src: "./fonts/Stolzl/stolzl_light.otf",
+  // display: "swap",
+  // variable: "--font-stolzl",
+});
 
 export default function RootLayout({
   children,
@@ -39,9 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${stolzlFont.variable} `}
-      >
+      <body className={`${stolzlFont.className}`}>
         <Center>
           <Header />
           {children}

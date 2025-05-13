@@ -43,16 +43,21 @@
 .btn-primary {
   background-color: #0063B0;
   border-radius: 10px;
-  padding: 10px 25px;
+  /* padding: 10px 25px; */
   color: white;
   font-weight: 600;
   font-size: 14px;
   line-height: 150%;
-
 }
 
 .btn:hover {
   opacity: 0.8;
+}
+
+a.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 input {
