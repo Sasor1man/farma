@@ -3,6 +3,7 @@ import { Component } from "react";
 import Image from "next/image";
 import CompImg from "../../../../public/imgs/header/image 1.png";
 import * as Svgs from "../../../../public/imgs/header/Svgs";
+import Link from "next/link";
 
 const headerClassRight = () => `flex items-center justify-between`;
 
@@ -19,7 +20,9 @@ class HeaderBottom extends React.Component<
     return (
       <div className="h-[58] flex justify-between items-center headerBottom">
         <Image src={CompImg} alt="" width={119} height={58} />
-        <button className="w-[110px] h-[41px] btn btn-primary">Каталог</button>
+        <Link href={"catalog"} className="w-[110px] h-[41px] btn btn-primary">
+          Каталог
+        </Link>
         <div className="w-[636px] h-[41px] flex">
           <input
             type="text"
