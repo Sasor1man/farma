@@ -68,20 +68,39 @@ input:hover {
   opacity: 1;
 }
 
-ul {
-  list-style: url(../../public/imgs/Rectangle\ 31.svg);
-}
+
 
 ul li {
-  padding-left: 15px;
   height: 24px;
   margin-bottom: 15px;
-  margin-left: 15px;
+  position: relative;
 }
 
-ul li::marker {
-  height: 8px;
+
+ul li::before {
+  background-color: #84C0EA;
+  content: url(../../public/imgs/Rectangle\ 31.svg);
   width: 8px;
+  height: 8px;
+  display: inline-block;
+  position: relative;
+  top: 30%;
+  margin-right: 20px;
+}
+
+.offerlist li {
+  /* left: 17px; */
+  margin-top: 20px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.offerlist li::before {
+  background-color: white;
+  margin-right: 0;
+  left: 0;
 }
 
 body {
