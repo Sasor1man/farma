@@ -95,8 +95,8 @@ const Offerlist: React.FunctionComponent<OfferlistProps> = () => {
         >
           <h3 className="text-xl font-semibold">{e.title}</h3>
           <ul className="text-sm offerlist">
-            {e.descrList.map((el) => (
-              <li>{el}</li>
+            {e.descrList.map((el, i) => (
+              <li key={i}>{el}</li>
             ))}
           </ul>
           <Link
