@@ -15,6 +15,7 @@ const eslintConfig = [
     files: ["src/generated/**"],
     rules: {
       "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-unused-vars": "off",
     },
   },
 ];
