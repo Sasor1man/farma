@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Component } from "react";
 import Link from "next/link";
 import * as Svgs from "../../../../public/imgs/header/Svgs";
 

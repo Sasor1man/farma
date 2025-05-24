@@ -82,9 +82,7 @@ const offerlistObj: { title: string; descrList: string[]; color: string }[] = [
   },
 ];
 
-interface OfferlistProps {}
-
-const Offerlist: React.FunctionComponent<OfferlistProps> = () => {
+const Offerlist: React.FunctionComponent = () => {
   return (
     <div className="gap-[24px] flex flex-wrap text-white relative mt-[150px]">
       {offerlistObj.map((e) => (

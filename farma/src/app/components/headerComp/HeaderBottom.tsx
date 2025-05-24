@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Component } from "react";
 import Image from "next/image";
 import CompImg from "../../../../public/imgs/header/image 1.png";
 import * as Svgs from "../../../../public/imgs/header/Svgs";
