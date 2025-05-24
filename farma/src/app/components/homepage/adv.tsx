@@ -3,9 +3,7 @@ import Svgs from "../../../../public/imgs/header/Svgs";
 import Image from "next/image";
 import Brands from "../../../../public/imgs/header/brands__inner-wrapper.png";
 
-interface AdvProps {}
-
-const Adv: React.FunctionComponent<AdvProps> = () => {
+const Adv: React.FunctionComponent = () => {
   return (
     <div className="h-[324px] flex mt-[120px] justify-between">
       <div className="w-[306px]">

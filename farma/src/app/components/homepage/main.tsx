@@ -3,9 +3,7 @@ import Slider from "../../../../public/imgs/slider__img.png";
 import { FunctionComponent } from "react";
 import Link from "next/link";
 
-interface MainProps {}
-
-const Main: FunctionComponent<MainProps> = () => {
+const Main: FunctionComponent = () => {
   return (
     <main className="bg-radial from-[#AAADB2] to-[#C8C9CB] h-[500px] relative flex items-center">
       <div className="w-[429px] h-[324px] text-[#F5F6F6] absolute left-[100px]">

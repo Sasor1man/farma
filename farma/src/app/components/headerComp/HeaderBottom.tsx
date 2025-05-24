@@ -7,14 +7,7 @@ import Link from "next/link";
 
 const headerClassRight = () => `flex items-center justify-between`;
 
-interface HeaderBottomProps {}
-
-interface HeaderBottomState {}
-
-class HeaderBottom extends React.Component<
-  HeaderBottomProps,
-  HeaderBottomState
-> {
+class HeaderBottom extends React.Component {
   state = {};
   render() {
     return (

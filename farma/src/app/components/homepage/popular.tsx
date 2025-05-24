@@ -25,9 +25,7 @@ const cards: { title: string; price: number; imgLink: string }[] = [
   },
 ];
 
-interface PopularProps {}
-
-const Popular: React.FunctionComponent<PopularProps> = () => {
+const Popular: React.FunctionComponent = () => {
   return (
     <div className="mt-[114px] h-[542px] relative">
       <div className="arrow-link">

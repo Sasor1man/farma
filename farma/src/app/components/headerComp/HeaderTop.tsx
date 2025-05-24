@@ -15,14 +15,12 @@ const linksArr: { article: string; href: string }[] = [
 
 const headerClassRight = `flex items-center justify-between`;
 
-interface HeaderTopProps {}
-
 interface HeaderTopState {
   links: { article: string; href: string }[];
   contacts: { phone: string; mail: string };
 }
 
-class HeaderTop extends React.Component<HeaderTopProps, HeaderTopState> {
+class HeaderTop extends React.Component<HeaderTopState> {
   state = {
     links: linksArr,
     contacts: {

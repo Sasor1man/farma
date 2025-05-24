@@ -6,9 +6,7 @@ import { FunctionComponent } from "react";
 
 const gridFirst = () => `font-medium text-base leading-[150%]`;
 
-interface FooterProps {}
-
-const Footer: FunctionComponent<FooterProps> = () => {
+const Footer: FunctionComponent = () => {
   return (
     <footer className="h-[643px] flex flex-col">
       <div className="h-[442px] border-t border-[#C9C9C9] border-b border-solid flex justify-between items-center mt-[120px]">
