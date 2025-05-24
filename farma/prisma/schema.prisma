@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Catalog {
+  id               Int     @id @default(autoincrement())
+  title            String?
+  description_list Json?   @map("description-list") @db.Json
+}
+
+model Products {
+  id          Int      @id @default(autoincrement())
+  title       String?
+  price       Int?
+  description String?
+  brand       String?
+  order       Boolean?
+}
