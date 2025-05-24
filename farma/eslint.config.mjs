@@ -19,8 +19,11 @@ const eslintConfig = [
     },
   },
   {
-    ignores: ["src/generated/**"],
-  },
+    ignores: [
+      ".next/**",
+      "src/generated/**",
+    ],
+  }
 ];
 
 export default eslintConfig;
