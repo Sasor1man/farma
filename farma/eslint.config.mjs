@@ -18,6 +18,9 @@ const eslintConfig = [
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+  {
+    ignores: ["src/generated/**"],
+  },
 ];
 
 export default eslintConfig;
