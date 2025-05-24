@@ -1,4 +1,5 @@
 // import { Geist, Geist_Mono } from "next/font/google";
+import * as React from "react";
 import localFont from "next/font/local";
 import "./globals.css";
 import "./styles/header/style.css";
