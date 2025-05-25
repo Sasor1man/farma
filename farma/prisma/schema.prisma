@@ -9,9 +9,9 @@ datasource db {
 }
 
 model Catalog {
-  id               Int     @id @default(autoincrement())
-  title            String?
-  description_list Json?   @map("description-list") @db.Json
+  id              Int     @id @default(autoincrement())
+  title           String?
+  descriptionList Json?   @db.Json
 }
 
 model Products {

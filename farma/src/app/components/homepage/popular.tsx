@@ -1,24 +1,13 @@
 import * as React from "react";
 import Svgs from "../../../../public/imgs/header/Svgs";
 import Image from "next/image";
-import { prisma } from "@/lib/prisma";
+import { Product } from "@/types/productInterface";
 
-interface Product {
-  id: number;
-  title?: string;
-  price?: number;
-  description?: string;
-  brand?: string;
-  order?: boolean;
+interface Props {
+  products: Product[];
 }
 
-const Popular: React.FunctionComponent = async () => {
-  const products: Product[] = await prisma.$queryRaw`
-    SELECT * FROM "Products"
-    ORDER BY RANDOM()
-    LIMIT 4
-  `;
-
+const Popular: React.FunctionComponent<Props> = ({ products }) => {
   return (
     <div className="mt-[114px] h-[542px] relative">
       <div className="arrow-link">

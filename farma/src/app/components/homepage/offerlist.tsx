@@ -1,99 +1,33 @@
 import Link from "next/link";
 import * as React from "react";
+import { Offers } from "@/types/offers";
 
-const offerlistObj: { title: string; descrList: string[]; color: string }[] = [
-  {
-    title: `Имплантология`,
-    color: "F98C23",
-    descrList: [
-      "Набор для фиксации костных блоков",
-      "Биоматериалы",
-      "Инструменты для работы с биоматериалами",
-      "Ронжиры",
-      "Костные мельницы",
-      "Ножницы",
-      "Чашки для костного материала",
-    ],
-  },
-  {
-    title: `Хирургия`,
-    color: "AE8EB5",
-    descrList: [
-      "Элеваторы и люксаторы",
-      "Периотомы",
-      "Пинцеты",
-      "Распаторы",
-      "Иглодержатели",
-      "Ножницы",
-      "Лезвия и рукоятки для лезвий",
-    ],
-  },
-  {
-    title: `Пародонтология`,
-    color: "E74F4E",
-    descrList: ["Кюреты Грейси", "Скалеры", "Зонды пародонтологические"],
-  },
-  {
-    title: `Ортопедия`,
-    color: "91B450",
-    descrList: [
-      "Набор для снятия коронок",
-      "Коронкосниматели",
-      "Эмалевые ножи",
-      "Зеркала для фотографирования",
-      "Динамометрические ключи и отвертки",
-      "Контрастеры",
-    ],
-  },
-  {
-    title: `Терапия и диагностика`,
-    color: "EFB434",
-    descrList: [
-      "Зеркала, микрозеркала и рукоятки",
-      "Щипцы для извлечения сломанных инструментов из каналов",
-      "Инструменты для композитов",
-      "Держатель файлов",
-      "Пинцеты",
-    ],
-  },
-  {
-    title: `Ортодонтия`,
-    color: "0090B5",
-    descrList: [
-      "Набор для фиксации костных блоков",
-      "Биоматериалы",
-      "Инструменты для работы с биоматериалами",
-      "Ронжиры",
-      "Костные мельницы",
-      "Чашки для костного материала",
-    ],
-  },
-  {
-    title: `Расходные материалы`,
-    color: "8467CA",
-    descrList: [
-      "Аспираторы, адаптеры",
-      "Ирригационные системы",
-      "Шовный материал",
-      "Биоматериалы",
-      "Стерильные комплекты для хирургии",
-      "Лезвия для скальпелей",
-    ],
-  },
-];
+const offerColorMap: { [key: string]: string } = {
+  Имплантология: "F98C23",
+  Хирургия: "AE8EB5",
+  Пародонтология: "E74F4E",
+  Ортопедия: "91B450",
+  "Терапия и диагностика": "EFB434",
+  Ортодонтия: "0090B5",
+  "Расходные материалы": "8467CA",
+};
 
-const Offerlist: React.FunctionComponent = () => {
+interface Props {
+  offers: Offers[];
+}
+
+const Offerlist: React.FunctionComponent<Props> = ({ offers }) => {
   return (
     <div className="gap-[24px] flex flex-wrap text-white relative mt-[150px]">
-      {offerlistObj.map((e) => (
+      {offers.map((e) => (
         <div
-          key={e.title}
+          key={e.id}
           className={`relative w-[306px] h-[493px] rounded-[10px] py-[35px] pl-[35px] pr-[25px] flex flex-col`}
-          style={{ backgroundColor: `#${e.color}` }}
+          style={{ backgroundColor: `#${offerColorMap[e.title]}` }}
         >
           <h3 className="text-xl font-semibold">{e.title}</h3>
           <ul className="text-sm offerlist">
-            {e.descrList.map((el, i) => (
+            {e.descriptionList?.map((el, i) => (
               <li key={i}>{el}</li>
             ))}
           </ul>
