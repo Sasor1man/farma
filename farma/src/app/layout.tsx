@@ -7,6 +7,7 @@ import "./styles/footer/style.css";
 import Header from "./components/header";
 import Center from "./components/center";
 import Footer from "./components/footer";
+import { ReduxProvider } from "@/app/store/Provider";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -33,11 +34,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${stolzlFont.className}`}>
-        <Center>
-          <Header />
-          {children}
-          <Footer />
-        </Center>
+        <ReduxProvider>
+          <Center>
+            <Header />
+            {children}
+            <Footer />
+          </Center>
+        </ReduxProvider>
       </body>
     </html>
   );
