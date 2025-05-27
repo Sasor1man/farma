@@ -123,3 +123,10 @@ h2 {
 .arrow-link>svg {
   margin-left: 25px;
 }
+
+.catalog-link svg {
+  width: 6;
+  height: 6;
+  border-radius: 2px;
+  background-color: #0063B0;
+}
