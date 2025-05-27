@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-const initialState = { catalogList: [] };
+// const initialState = { catalogList: [] };
 
 export const store = configureStore({
   reducer: {},
