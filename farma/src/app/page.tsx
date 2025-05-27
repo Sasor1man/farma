@@ -16,10 +16,6 @@ export default async function Home() {
   const offers: Offers[] = await prisma.$queryRaw`
   SELECT * FROM "Catalog"`;
 
-  const saveLocal = (item: string): void => {
-    localStorage.setItem("offerlist", item);
-  };
-
   return (
     <>
       <Main />
