@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Offers } from "@/types/offers";
 import Image from "next/image";
+import Link from "next/link";
 
 interface CatalogListProps {
   offers: Offers[];
@@ -24,9 +25,12 @@ const CatalogList: React.FunctionComponent<CatalogListProps> = ({ offers }) => {
           </div>
           <div className="p-[20px] flex flex-col justify-between flex-1">
             <p className="h-[21px] font-extrabold text-base">{e.title}</p>
-            <button className="btn btn-primary mt-auto h-[41px] w-[170px]">
+            <Link
+              href={`/catalog/${e.linkName}`}
+              className="btn btn-primary mt-auto h-[41px] w-[170px]"
+            >
               Посмотреть все
-            </button>
+            </Link>
           </div>
         </div>
       ))}

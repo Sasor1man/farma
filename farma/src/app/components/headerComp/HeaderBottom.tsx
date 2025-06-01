@@ -12,7 +12,7 @@ class HeaderBottom extends React.Component {
     return (
       <div className="h-[58] flex justify-between items-center headerBottom">
         <Image src={CompImg} alt="" width={119} height={58} />
-        <Link href={"catalog"} className="w-[110px] h-[41px] btn btn-primary">
+        <Link href={"/catalog"} className="w-[110px] h-[41px] btn btn-primary">
           Каталог
         </Link>
         <div className="w-[636px] h-[41px] flex">
