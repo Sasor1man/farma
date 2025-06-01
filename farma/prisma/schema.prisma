@@ -12,6 +12,7 @@ model Catalog {
   id              Int     @id @default(autoincrement())
   title           String?
   descriptionList Json?   @db.Json
+  linkName        String?
 }
 
 model Products {
