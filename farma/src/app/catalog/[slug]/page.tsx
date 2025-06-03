@@ -5,11 +5,9 @@ import Svgs from "../../../../public/imgs/header/Svgs";
 import { prisma } from "@/lib/prisma";
 import { brandList } from "@/app/components/general/brandlisy";
 import { BrandList } from "@/types/brandlist";
-
-const brands: BrandList[] =
-  await prisma.$queryRaw`SELECT brand FROM "Products"`;
-
-const brandFiltered: string[] = brandList(brands);
+import LeftBar from "./slugcomponents/leftbar";
+import CategoryWrapper from "./slugcomponents/categorywrapper";
+import { Product } from "@/types/productInterface";
 
 export default async function Page({
   params,
@@ -17,6 +15,14 @@ export default async function Page({
   params: Promise<{ slug: CategorySlug }>;
 }) {
   const { slug } = await params;
+
+  const brands: BrandList[] =
+    await prisma.$queryRaw`SELECT brand FROM "Products"`;
+
+  const brandFiltered: string[] = brandList(brands);
+
+  const productArr: Product[] =
+    await prisma.$queryRaw`SELECT * FROM "Products"`;
 
   return (
     <div>
@@ -26,45 +32,8 @@ export default async function Page({
         <Svgs.ArrowSvg />
       </div>
       <div className="flex justify-between">
-        <div className="w-[306px]">
-          <form className="category-form">
-            <div>
-              <h3>Бренды</h3>
-              {brandFiltered.map((e) => (
-                <div className="brand-input" key={e}>
-                  <input type="checkbox" id={e} name={e} />
-                  <label htmlFor={e}>{e}</label>
-                </div>
-              ))}
-            </div>
-            <div>
-              <h3>Наличие</h3>
-              <div className="brand-input">
-                <input
-                  type="radio"
-                  name="have"
-                  id="avaible"
-                  value={`avaible`}
-                />
-                <label htmlFor="avaible">В наличии</label>
-              </div>
-              <div className="brand-input">
-                <input type="radio" name="have" id="order" value={`order`} />
-                <label htmlFor="order">Под заказ</label>
-              </div>
-            </div>
-            <div>
-              <h3>Цена</h3>
-              <div className="price-input">
-                <label htmlFor="price">От</label>
-                <input type="number" name="price" id="low-price" />
-                <label htmlFor="price">До</label>
-                <input type="number" name="price" id="high-price" />
-              </div>
-            </div>
-          </form>
-        </div>
-        <div></div>
+        <LeftBar brandFiltered={brandFiltered} />
+        <CategoryWrapper products={productArr} />
       </div>
     </div>
   );
