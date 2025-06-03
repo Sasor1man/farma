@@ -17,7 +17,7 @@ const renderPageDiv = (
   func: (n: number) => void,
   currentPage: number
 ) => {
-  let result = [];
+  const result = [];
   for (let i = 0; i < num; i++) {
     result.push(
       <div
