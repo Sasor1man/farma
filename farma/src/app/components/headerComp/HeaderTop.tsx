@@ -5,11 +5,11 @@ import * as Svgs from "../../../../public/imgs/header/Svgs";
 const linksArr: { article: string; href: string }[] = [
   {
     article: "О компании",
-    href: "company",
+    href: "/company",
   },
-  { article: `Новости`, href: "news" },
-  { article: "Статьи", href: "articles" },
-  { article: "Контакты", href: "contacts" },
+  { article: `Новости`, href: "/news" },
+  { article: "Статьи", href: "/articles" },
+  { article: "Контакты", href: "/contacts" },
 ];
 
 const headerClassRight = `flex items-center justify-between`;
