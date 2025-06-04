@@ -4,7 +4,7 @@ header .headerTop div>svg {
   margin-right: 16px;
 }
 
-header .headerBottom div>svg {
+header .headerBottom div svg {
   width: 30px;
   height: 30px;
   margin-right: 10px;
