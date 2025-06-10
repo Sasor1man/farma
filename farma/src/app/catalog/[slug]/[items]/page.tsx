@@ -1,12 +1,8 @@
-import { categories } from "@/app/components/general/categorytranslate";
-import { CategorySlug } from "@/app/components/general/categorytranslate";
-
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: CategorySlug }>;
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
   return <div></div>;
 }
