@@ -22,7 +22,7 @@ export default async function Page({
   const brandFiltered: string[] = brandList(brands);
 
   const productArr: Product[] =
-    await prisma.$queryRaw`SELECT * FROM "Products"`;
+    await prisma.$queryRaw`SELECT * FROM "Products" WHERE category = ${slug}`;
 
   return (
     <div>

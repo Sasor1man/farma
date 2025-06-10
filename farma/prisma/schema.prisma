@@ -22,4 +22,6 @@ model Products {
   description String?
   brand       String?
   order       Boolean?
+  link        String?
+  category    String?
 }
