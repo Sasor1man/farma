@@ -35,7 +35,7 @@ const Offerlist: React.FunctionComponent<Props> = ({ offers }) => {
           </ul>
           <Link
             className="btn btn-primary mt-auto h-[41px] w-[170px]"
-            href={``}
+            href={`catalog/${e.linkName}`}
           >
             {"Посмотреть все"}
           </Link>
@@ -45,7 +45,10 @@ const Offerlist: React.FunctionComponent<Props> = ({ offers }) => {
         className={`relative w-[306px] h-[493px] rounded-[10px] py-[35px] pl-[35px] pr-[25px] flex flex-col bg-[#C39440]`}
       >
         <h3 className="text-xl font-semibold">Весь каталог</h3>
-        <Link className="btn btn-primary mt-auto h-[41px] w-[170px]" href={``}>
+        <Link
+          className="btn btn-primary mt-auto h-[41px] w-[170px]"
+          href={`catalog`}
+        >
           {"Посмотреть все"}
         </Link>
       </div>

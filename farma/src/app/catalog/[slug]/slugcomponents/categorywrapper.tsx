@@ -3,8 +3,9 @@
 import { Product } from "@/types/productInterface";
 import Image from "next/image";
 import Pagination from "./pagination";
-
 import { FunctionComponent, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/app/store/slices/cartSlice";
 
 interface CategoryWrapperProps {
   products: Product[];
@@ -15,6 +16,7 @@ const CategoryWrapper: FunctionComponent<CategoryWrapperProps> = ({
 }) => {
   const [prodDivided, setProdDivided] = useState<Product[][]>([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const dispatch = useDispatch();
 
   const divideProducts = (numOfPages: number, productsArr: Product[]) => {
     const emptyArr: Product[][] = [];
@@ -33,6 +35,10 @@ const CategoryWrapper: FunctionComponent<CategoryWrapperProps> = ({
     divideProducts(pageNum, products);
     console.log(1);
   }, [products]);
+
+  const handleAdd = (id: number) => {
+    dispatch(addToCart({ id, quantity: 1 }));
+  };
 
   return (
     <div className="w-[966px] flex-column align-center justify-between">
@@ -53,7 +59,10 @@ const CategoryWrapper: FunctionComponent<CategoryWrapperProps> = ({
             <div className="p-[20px] flex flex-col justify-between flex-1">
               <p className="h-[21px] font-extrabold text-sm">{e.title}</p>
               <p className="h-[32px] text-xl font-extrabold">{e.price} P</p>
-              <button className="btn btn-primary w-[125px] h-[41px]">
+              <button
+                className="btn btn-primary w-[125px] h-[41px]"
+                onClick={() => handleAdd(e.id)}
+              >
                 В корзину
               </button>
             </div>
