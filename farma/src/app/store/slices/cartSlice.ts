@@ -25,11 +25,13 @@ const cartSlice = createSlice({
       // state.items = state.items.filter((item) => item.id !== action.payload.id);
       const item = state.items.find((i) => i.id === action.payload.id);
       if (item) {
-        item.quantity > 1
-          ? item.quantity--
-          : (state.items = state.items.filter(
-              (item) => item.id !== action.payload.id
-            ));
+        if (item.quantity > 1) {
+          item.quantity--;
+        } else {
+          state.items = state.items.filter(
+            (item) => item.id !== action.payload.id
+          );
+        }
       }
     },
     clearCart(state) {
