@@ -33,7 +33,6 @@ const CategoryWrapper: FunctionComponent<CategoryWrapperProps> = ({
     const pageNum = Math.ceil(products.length / 12);
 
     divideProducts(pageNum, products);
-    console.log(1);
   }, [products]);
 
   const handleAdd = (id: number) => {
