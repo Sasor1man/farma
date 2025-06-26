@@ -49,7 +49,7 @@ const List = () => {
       return renderArr;
     };
     setReanderArr(makeRenderArr(items, products));
-  }, [products]);
+  }, [items, products]);
 
   const deleteItem = (id: number) => {
     const item = items.find((e) => e.id === id);
