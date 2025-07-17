@@ -1,17 +1,12 @@
 "use client";
 
-import { FunctionComponent } from "react";
+import { useSearchParams } from "next/navigation";
+import { FunctionComponent, useRef, useState } from "react";
 import * as React from "react";
-import { useState } from "react";
 
 interface LeftBarProps {
   brandFiltered: string[];
-  action: (formData: FormData) => void;
 }
-
-const submit = (form: HTMLFormElement) => {
-  form.requestSubmit();
-};
 
 const zeroValidate = (value: string): string => {
   if (value === "") return "0";
@@ -24,58 +19,107 @@ const zeroValidate = (value: string): string => {
   return value;
 };
 
+const saveArray = (arr: string[]) => {
+  const forSave = JSON.stringify(arr);
+  localStorage.setItem('brandArr', forSave)
+}
+
 const LeftBar: FunctionComponent<LeftBarProps> = ({
   brandFiltered,
-  action,
 }) => {
   const [priceMin, setPriceMin] = useState("0");
   const [priceMax, setPriceMax] = useState("0");
+  const [priceMinRequest, setpriceMinRequest] = useState("0");
+  const [priceMaxRequest, setpriceMaxRequest] = useState("0");
+  const [brandArr, setBrandArr] = useState<string[]>([]);
+  const formRef = useRef<HTMLFormElement>(null)
+  const searchParams = useSearchParams();
+  const [availability, setAvailability] = useState('available')
 
   React.useEffect(() => {
     const min = localStorage.getItem("lowPrice") || "0";
     const max = localStorage.getItem("highPrice") || "0";
 
+    const brandsFromLocal = localStorage.getItem('brandArr');
+    if (brandsFromLocal) {
+      const brands = JSON.parse(brandsFromLocal) as string[];
+      setBrandArr(brands)
+    } else setBrandArr([] as string[])
+
     setPriceMin(min);
     setPriceMax(max);
+
+    const availability: string | null = localStorage.getItem('availability')
+    if (availability)  setAvailability(availability)
+    
   }, []);
 
-  const submitOnClick = (e: React.MouseEvent<HTMLFormElement>) => {
-    e.stopPropagation();
-    const element = e.target as HTMLInputElement;
+  React.useEffect(() => {
 
-    if (["checkbox", "radio"].includes(element.type)) {
-      submit(e.currentTarget);
+    async function productRequest() {
+      console.log(searchParams)
     }
-  };
+    productRequest()
+
+  },[priceMinRequest, priceMaxRequest, brandArr, searchParams, availability])
+
+  // const submit = () => {
+  //   // const form = formRef.current as HTMLFormElement
+  //   // form.requestSubmit();    
+
+  //   console.log(searchParams)
+  // };
+
+  const checkedCheck = (brand: string) => brandArr.includes(brand);
+
+  const handleChange = (brand: string) => {
+     setBrandArr(prev => {
+      const newBrandArr = prev.includes(brand) ? prev.filter(e => e !== brand) : [...prev, brand]
+      saveArray(newBrandArr)
+      // submit()
+      return newBrandArr
+     })
+
+  }
 
   const submitNum = (e: React.FocusEvent<HTMLInputElement>) => {
     const input = e.target;
     const value = zeroValidate(input.value);
+    input.value = value
 
     if (input.id === "low-price") {
       setPriceMin(value);
+      setpriceMinRequest(value)
       localStorage.setItem("lowPrice", value);
     } else {
       setPriceMax(value);
+      setpriceMaxRequest(value)
       localStorage.setItem("highPrice", value);
     }
 
-    const form = e.currentTarget.form as HTMLFormElement;
-    submit(form);
+    // submit();
   };
 
   const numKeyValidate = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (["-", "+", ".", "e"].includes(e.key)) e.preventDefault();
   };
 
+  const saveRadio = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setAvailability(value)
+    localStorage.setItem('availability', value)
+  }
+
+
+
   return (
     <div className="w-[306px]">
-      <form className="category-form" action={action} onClick={submitOnClick}>
+      <form className="category-form" ref={formRef}>
         <div>
           <h3>Бренды</h3>
           {brandFiltered.map((e) => (
             <div className="brand-input" key={e}>
-              <input type="checkbox" id={e} name={e} />
+              <input type="checkbox" id={e} name={e} checked={checkedCheck(e)} onChange={() => handleChange(e)} />
               <label htmlFor={e}>{e}</label>
             </div>
           ))}
@@ -87,33 +131,34 @@ const LeftBar: FunctionComponent<LeftBarProps> = ({
               type="radio"
               name="have"
               id="avaible"
-              value={`avaible`}
-              defaultChecked
+              value={`available`}
+              checked={availability === `available`}
+              onChange={(e) => saveRadio(e)}
             />
             <label htmlFor="avaible">В наличии</label>
           </div>
           <div className="brand-input">
-            <input type="radio" name="have" id="order" value={`order`} />
+            <input type="radio" name="have" id="order" value={`order`}  checked={availability === `order`} onChange={e => saveRadio(e)}/>
             <label htmlFor="order">Под заказ</label>
           </div>
         </div>
         <div id="num">
           <h3>Цена</h3>
           <div className="price-input">
-            <label htmlFor="price">От</label>
+            <label htmlFor="low-price">От</label>
             <input
               type="number"
-              name="price"
+              name="low-price"
               id="low-price"
               value={priceMin}
               onChange={(e) => setPriceMin(e.target.value)}
               onBlur={submitNum}
               onKeyDown={numKeyValidate}
             />
-            <label htmlFor="price">До</label>
+            <label htmlFor="high-price">До</label>
             <input
               type="number"
-              name="price"
+              name="high-price"
               id="high-price"
               value={priceMax}
               onChange={(e) => setPriceMax(e.target.value)}

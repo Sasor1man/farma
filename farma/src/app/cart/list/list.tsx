@@ -1,12 +1,12 @@
 "use client";
 
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { Product } from "@/types/productInterface";
 import { CartItem } from "@/types/cartitem";
 import { RootState } from "@/app/store/store";
 import Image from "next/image";
-import { useDispatch } from "react-redux";
 import { removeFromCart } from "@/app/store/slices/cartSlice";
 
 const List = () => {

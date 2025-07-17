@@ -24,11 +24,6 @@ export default async function Page({
   const productArr: Product[] =
     await prisma.$queryRaw`SELECT * FROM "Products" WHERE category = ${slug}`;
 
-  const action = async (formData: FormData) => {
-    "use server";
-    console.log(formData);
-  };
-
   return (
     <div>
       <MainLink />
@@ -37,7 +32,7 @@ export default async function Page({
         <Svgs.ArrowSvg />
       </div>
       <div className="flex justify-between">
-        <LeftBar brandFiltered={brandFiltered} action={action} />
+        <LeftBar brandFiltered={brandFiltered} />
         <CategoryWrapper products={productArr} />
       </div>
     </div>
