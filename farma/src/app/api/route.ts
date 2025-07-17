@@ -18,3 +18,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Ошибка сервера" }, { status: 500 });
   }
 }
+
+// export async function GET(request: NextRequest) {
+//   try {
+
+    
+
+//   }catch (error) {
+//     console.error("API error:", error);
+//     return NextResponse.json({ error: "Ошибка сервера" }, { status: 500 });
+//   }
+// }

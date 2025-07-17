@@ -1,12 +1,12 @@
 "use client";
 
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { Product } from "@/types/productInterface";
 import { CartItem } from "@/types/cartitem";
 import { RootState } from "@/app/store/store";
 import Image from "next/image";
-import { useDispatch } from "react-redux";
 import { removeFromCart } from "@/app/store/slices/cartSlice";
 
 const List = () => {
@@ -49,7 +49,7 @@ const List = () => {
       return renderArr;
     };
     setReanderArr(makeRenderArr(items, products));
-  }, [products]);
+  }, [items, products]);
 
   const deleteItem = (id: number) => {
     const item = items.find((e) => e.id === id);
