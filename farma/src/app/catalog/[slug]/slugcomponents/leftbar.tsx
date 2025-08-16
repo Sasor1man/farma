@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { FunctionComponent, useRef, useState } from "react";
 import * as React from "react";
 
@@ -29,14 +29,15 @@ const LeftBar: FunctionComponent<LeftBarProps> = ({
 }) => {
   const [priceMin, setPriceMin] = useState("0");
   const [priceMax, setPriceMax] = useState("0");
-  const [priceMinRequest, setpriceMinRequest] = useState("0");
-  const [priceMaxRequest, setpriceMaxRequest] = useState("0");
   const [brandArr, setBrandArr] = useState<string[]>([]);
+  const [availability, setAvailability] = useState('available')
   const formRef = useRef<HTMLFormElement>(null)
   const searchParams = useSearchParams();
-  const [availability, setAvailability] = useState('available')
+  const router = useRouter()
 
   React.useEffect(() => {
+
+
     const min = localStorage.getItem("lowPrice") || "0";
     const max = localStorage.getItem("highPrice") || "0";
 
@@ -50,19 +51,24 @@ const LeftBar: FunctionComponent<LeftBarProps> = ({
     setPriceMax(max);
 
     const availability: string | null = localStorage.getItem('availability')
-    if (availability)  setAvailability(availability)
-    
+    if (availability) setAvailability(availability)
+
+
   }, []);
 
   React.useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString())
 
-    async function productRequest() {
-      console.log(searchParams)
-    }
-    productRequest()
+    params.set('availability', availability)
+    params.set('minprice', priceMin)
+    params.set('maxprice', priceMax)
 
-  },[priceMinRequest, priceMaxRequest, brandArr, searchParams, availability])
+    const brands = brandArr.join(',')
+    params.set('brands', brands)
 
+
+    router.push(`?${params}`)
+  }, [availability, brandArr, priceMax, priceMin, router, searchParams])
   // const submit = () => {
   //   // const form = formRef.current as HTMLFormElement
   //   // form.requestSubmit();    
@@ -73,12 +79,12 @@ const LeftBar: FunctionComponent<LeftBarProps> = ({
   const checkedCheck = (brand: string) => brandArr.includes(brand);
 
   const handleChange = (brand: string) => {
-     setBrandArr(prev => {
+    setBrandArr(prev => {
       const newBrandArr = prev.includes(brand) ? prev.filter(e => e !== brand) : [...prev, brand]
       saveArray(newBrandArr)
       // submit()
       return newBrandArr
-     })
+    })
 
   }
 
@@ -86,14 +92,16 @@ const LeftBar: FunctionComponent<LeftBarProps> = ({
     const input = e.target;
     const value = zeroValidate(input.value);
     input.value = value
+    const params = new URLSearchParams(searchParams.toString())
+    console.log(params)
+
 
     if (input.id === "low-price") {
       setPriceMin(value);
-      setpriceMinRequest(value)
       localStorage.setItem("lowPrice", value);
+
     } else {
       setPriceMax(value);
-      setpriceMaxRequest(value)
       localStorage.setItem("highPrice", value);
     }
 
@@ -138,7 +146,7 @@ const LeftBar: FunctionComponent<LeftBarProps> = ({
             <label htmlFor="avaible">В наличии</label>
           </div>
           <div className="brand-input">
-            <input type="radio" name="have" id="order" value={`order`}  checked={availability === `order`} onChange={e => saveRadio(e)}/>
+            <input type="radio" name="have" id="order" value={`order`} checked={availability === `order`} onChange={e => saveRadio(e)} />
             <label htmlFor="order">Под заказ</label>
           </div>
         </div>

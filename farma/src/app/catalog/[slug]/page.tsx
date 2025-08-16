@@ -1,3 +1,5 @@
+// "use client";
+
 import { categories } from "@/app/components/general/categorytranslate";
 import { CategorySlug } from "@/app/components/general/categorytranslate";
 import MainLink from "@/app/components/general/mainlink";
@@ -8,12 +10,14 @@ import { BrandList } from "@/types/brandlist";
 import LeftBar from "./slugcomponents/leftbar";
 import CategoryWrapper from "./slugcomponents/categorywrapper";
 import { Product } from "@/types/productInterface";
+// import { use, useEffect } from "react";
 
 export default async function Page({
   params,
 }: {
   params: Promise<{ slug: CategorySlug }>;
 }) {
+  // const { slug } = use(params);
   const { slug } = await params;
 
   const brands: BrandList[] =
@@ -23,6 +27,12 @@ export default async function Page({
 
   const productArr: Product[] =
     await prisma.$queryRaw`SELECT * FROM "Products" WHERE category = ${slug}`;
+
+  // useEffect(() => {
+  //   async function getProducts() {
+
+  //   }
+  // })
 
   return (
     <div>
