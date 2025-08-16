@@ -7,7 +7,6 @@ import MainLink from "@/app/components/general/mainlink";
 import Svgs from "../../../../public/imgs/header/Svgs";
 import LeftBar from "./slugcomponents/leftbar";
 import CategoryWrapper from "./slugcomponents/categorywrapper";
-import { Product } from "@/types/productInterface";
 import { use, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
