@@ -41,7 +41,7 @@ const CategoryWrapper: FunctionComponent<CategoryWrapperProps> = ({
 
   return (
     <div className="w-[966px] flex-column align-center justify-between">
-      <div className=" h-[1688px] flex flex-wrap justify-between">
+      <div className=" gap-[20px] flex flex-wrap ">
         {prodDivided[currentPage]?.map((e) => (
           <div
             className="flex flex-col border border-[#3333334D] rounded-xl h-[404px] w-[306px]"
