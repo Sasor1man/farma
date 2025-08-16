@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { BrandList } from "@/types/brandlist";
+import { brandList } from "../components/general/brandlisy";
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,10 +21,15 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
 
-    const {filters} = request.json()
+    const brands: BrandList[] =
+    await prisma.$queryRaw`SELECT brand FROM "Products"`;
+
+    const brandFiltered: string[] = brandList(brands);
+
+    return NextResponse.json(brandFiltered);
 
   }catch (error) {
     console.error("API error:", error);
