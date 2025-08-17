@@ -12,10 +12,10 @@ export async function POST(request: NextRequest) {
         const products = await prisma.products.findMany({
             where:
             {
-                price: {
-                    gte: Number(minPrice),
-                    lte: Number(maxPrice)
-                },
+                price: (minPrice !== 0 || maxPrice !== 0) ? {
+                    gte: Number(minPrice) !== 0 ? Number(minPrice) : undefined,
+                    lte: Number(maxPrice) !== 0 ? Number(maxPrice) : undefined
+                } : undefined,
                 brand: brands && brands.length > 0 ? { in: brands } : undefined,
                 category: category || undefined,
                 order: order || undefined
