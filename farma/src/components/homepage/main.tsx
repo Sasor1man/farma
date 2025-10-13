@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Slider from "../../../../public/imgs/slider__img.png";
+import Slider from "../../../public/imgs/slider__img.png";
 import { FunctionComponent } from "react";
 import Link from "next/link";
 

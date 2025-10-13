@@ -1,7 +1,7 @@
 import * as React from "react";
-import Svgs from "../../../public/imgs/header/Svgs";
+import Svgs from "../../public/imgs/header/Svgs";
 import Image from "next/image";
-import CompImg from "../../../public/imgs/header/image 1.png";
+import CompImg from "../../public/imgs/header/image 1.png";
 import { FunctionComponent } from "react";
 
 const gridFirst = () => `font-medium text-base leading-[150%]`;

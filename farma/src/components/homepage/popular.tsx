@@ -1,5 +1,5 @@
 import * as React from "react";
-import Svgs from "../../../../public/imgs/header/Svgs";
+import Svgs from "../../../public/imgs/header/Svgs";
 import Image from "next/image";
 import { Product } from "@/types/productInterface";
 

@@ -2,11 +2,11 @@
 
 import * as React from "react";
 import Image from "next/image";
-import CompImg from "../../../../public/imgs/header/image 1.png";
-import * as Svgs from "../../../../public/imgs/header/Svgs";
+import CompImg from "../../../public/imgs/header/image 1.png";
+import * as Svgs from "../../../public/imgs/header/Svgs";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { RootState } from "@/app/store/store";
+import { RootState } from "@/store/store";
 import { CartItem } from "@/types/cartitem";
 
 const headerClassRight = () => `flex items-center justify-between`;

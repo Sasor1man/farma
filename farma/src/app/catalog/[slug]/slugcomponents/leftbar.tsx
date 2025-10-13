@@ -2,9 +2,9 @@
 
 import { FunctionComponent, useRef,} from "react";
 import * as React from "react";
+import { useDispatch } from "react-redux";
 
 interface LeftBarProps {
-  brandFiltered: string[];
   brandArr: string[]
   priceMin: string
   priceMax: string
@@ -18,8 +18,11 @@ interface LeftBarProps {
 }
 
 const LeftBar: FunctionComponent<LeftBarProps> = ({
-  brandFiltered, priceMin, priceMax, brandArr, availability, handleChange, submitNum, saveRadio, setPriceMax, setPriceMin
+  priceMin, priceMax, brandArr, availability, handleChange, submitNum, saveRadio, setPriceMax, setPriceMin
 }) => {
+
+  const dispatch = useDispatch();
+
   const formRef = useRef<HTMLFormElement>(null)
 
   const checkedCheck = (brand: string) => brandArr.includes(brand);
@@ -28,12 +31,14 @@ const LeftBar: FunctionComponent<LeftBarProps> = ({
     if (["-", "+", ".", "e"].includes(e.key)) e.preventDefault();
   };
 
+  const brands = dispatch()
+
   return (
     <div className="w-[306px]">
       <form className="category-form" ref={formRef}>
         <div>
           <h3>Бренды</h3>
-          {brandFiltered.map((e) => (
+          {brands.map((e) => (
             <div className="brand-input" key={e}>
               <input type="checkbox" id={e} name={e} checked={checkedCheck(e)} onChange={() => handleChange(e)} />
               <label htmlFor={e}>{e}</label>

@@ -1,7 +1,7 @@
 import * as React from "react";
-import Svgs from "../../../../public/imgs/header/Svgs";
+import Svgs from "../../../public/imgs/header/Svgs";
 import Image from "next/image";
-import Brands from "../../../../public/imgs/header/brands__inner-wrapper.png";
+import Brands from "../../../public/imgs/header/brands__inner-wrapper.png";
 
 const Adv: React.FunctionComponent = () => {
   return (

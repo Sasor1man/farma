@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FunctionComponent } from "react";
-import Svgs from "../../../../public/imgs/header/Svgs";
+import Svgs from "../../../public/imgs/header/Svgs";
 
 const MainLink: FunctionComponent = () => {
   return (

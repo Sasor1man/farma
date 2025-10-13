@@ -5,7 +5,7 @@ import Image from "next/image";
 import Pagination from "./pagination";
 import { FunctionComponent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "@/app/store/slices/cartSlice";
+import { addToCart } from "@/store/slices/cartSlice";
 
 interface CategoryWrapperProps {
   products: Product[];

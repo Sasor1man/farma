@@ -5,7 +5,7 @@ import { store } from "./store";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "@/app/store/slices/cartSlice";
+import { setCart } from "@/store/slices/cartSlice";
 import { RootState } from "../store/store";
 import { CartItem } from "@/types/cartitem";
 

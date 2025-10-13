@@ -1,9 +1,9 @@
 "use client";
 
 import * as React from 'react';
-import { categories } from "@/app/components/general/categorytranslate";
-import { CategorySlug } from "@/app/components/general/categorytranslate";
-import MainLink from "@/app/components/general/mainlink";
+import { categories } from "@/components/general/categorytranslate";
+import { CategorySlug } from "@/components/general/categorytranslate";
+import MainLink from "@/components/general/mainlink";
 import Svgs from "../../../../public/imgs/header/Svgs";
 import LeftBar from "./slugcomponents/leftbar";
 import CategoryWrapper from "./slugcomponents/categorywrapper";
@@ -17,7 +17,6 @@ export default function Page({
 }) {
   const { slug } = use(params);
 
-  const [brands, setBrands] = useState<string[]>([])
   const [priceMin, setPriceMin] = useState("0");
   const [priceMax, setPriceMax] = useState("0");
   const [brandArr, setBrandArr] = useState<string[]>([]);
@@ -56,19 +55,6 @@ export default function Page({
   }, [searchParams, slug])
 
   useEffect(() => {
-    async function fetchBrands() {
-
-      const res = await fetch("/api", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      });
-      const data = await res.json();
-      setBrands(data);
-    }
-    fetchBrands();
-  }, []);
-
-  React.useEffect(() => {
     const min = localStorage.getItem("lowPrice") || "0";
     const max = localStorage.getItem("highPrice") || "0";
 
@@ -87,7 +73,7 @@ export default function Page({
 
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const params = new URLSearchParams(searchParams.toString())
 
     params.set('availability', availability)
@@ -165,7 +151,7 @@ export default function Page({
         <Svgs.ArrowSvg />
       </div>
       <div className="flex justify-between">
-        <LeftBar brandFiltered={brands} setPriceMin={setPriceMin} setPriceMax={setPriceMax} saveRadio={(e: React.ChangeEvent<HTMLInputElement>) => saveRadio(e)} handleChange={(brand: string) => handleChange(brand)} submitNum={(e: React.FocusEvent<HTMLInputElement>) => submitNum(e)} priceMin={priceMin} priceMax={priceMax} brandArr={brandArr} availability={availability} />
+        <LeftBar setPriceMin={setPriceMin} setPriceMax={setPriceMax} saveRadio={(e: React.ChangeEvent<HTMLInputElement>) => saveRadio(e)} handleChange={(brand: string) => handleChange(brand)} submitNum={(e: React.FocusEvent<HTMLInputElement>) => submitNum(e)} priceMin={priceMin} priceMax={priceMax} brandArr={brandArr} availability={availability} />
         <CategoryWrapper products={productArr} />
       </div>
     </div>

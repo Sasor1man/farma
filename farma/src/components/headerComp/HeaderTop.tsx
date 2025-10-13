@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import * as Svgs from "../../../../public/imgs/header/Svgs";
+import * as Svgs from "../../../public/imgs/header/Svgs";
 
 const linksArr: { article: string; href: string }[] = [
   {

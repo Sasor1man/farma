@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { Product } from "@/types/productInterface";
 import { CartItem } from "@/types/cartitem";
-import { RootState } from "@/app/store/store";
+import { RootState } from "@/store/store";
 import Image from "next/image";
-import { removeFromCart } from "@/app/store/slices/cartSlice";
+import { removeFromCart } from "@/store/slices/cartSlice";
 
 const List = () => {
   const items = useSelector((state: RootState) => state.cart.items);
