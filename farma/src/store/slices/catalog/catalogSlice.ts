@@ -1,16 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { ICatalogState } from "./types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { BrandFilter, ICatalogState } from "./types";
 import { fetchBrands } from "./thunks";
 
+const defaultFilter = {
+    checkboxes: [],
+    availability: false,
+    priceMin: 0,
+    priceMax: 0,
+}
+
 const initialState: ICatalogState = {
-    brands: [],
+    filter: defaultFilter,
     isLoading: false
 }
 
 const catalogSlice = createSlice({
     name: 'catalog',
     initialState,
-    reducers: {},
+    reducers: {
+        _setFilter(state, action: PayloadAction<BrandFilter>) {
+            state.filter = {...state.filter, ...action.payload}
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchBrands.pending, (state => {
@@ -19,11 +30,10 @@ const catalogSlice = createSlice({
             .addCase(fetchBrands.rejected, (state) => {
                 state.isLoading = false;
             })
-            .addCase(fetchBrands.fulfilled, (state, action) => {
+            .addCase(fetchBrands.fulfilled, (state) => {
                 state.isLoading = false;
-                state.brands = action.payload;
             })
     }
 })
 
-export default catalogSlice.reducer
+export default catalogSlice

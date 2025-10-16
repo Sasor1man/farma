@@ -1,7 +1,7 @@
-import Main from "../components/homepage/main";
-import Adv from "../components/homepage/adv";
-import Offerlist from "../components/homepage/offerlist";
-import Popular from "../components/homepage/popular";
+import Main from "../../components/homepage/main";
+import Adv from "../../components/homepage/adv";
+import Offerlist from "../../components/homepage/offerlist";
+import Popular from "../../components/homepage/popular";
 import { prisma } from "@/lib/prisma";
 import { Product } from "@/types/productInterface";
 import { Offers } from "@/types/offers";

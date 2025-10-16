@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { BrandList } from "@/types/brandlist";
-import { brandList } from "../components/general/brandlisy";
+import { brandList } from "../../../components/general/brandlisy";
 
 export async function POST(request: NextRequest) {
   try {

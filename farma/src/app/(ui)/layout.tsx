@@ -2,11 +2,11 @@
 import * as React from "react";
 import localFont from "next/font/local";
 import "./globals.css";
-import "../styles/header/style.css";
-import "../styles/footer/style.css";
-import Header from "../components/header";
-import Center from "../components/center";
-import Footer from "../components/footer";
+import "../../styles/header/style.css";
+import "../../styles/footer/style.css";
+import Header from "../../components/header";
+import Center from "../../components/center";
+import Footer from "../../components/footer";
 import { ReduxProvider } from "@/store/Provider";
 
 // const geistSans = Geist({
@@ -21,7 +21,7 @@ import { ReduxProvider } from "@/store/Provider";
 // });
 
 const stolzlFont = localFont({
-  src: "../fonts/Stolzl/stolzl_light.otf",
+  src: "../../fonts/Stolzl/stolzl_light.otf",
   // display: "swap",
   // variable: "--font-stolzl",
 });

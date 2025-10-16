@@ -5,7 +5,7 @@ import catalogReduser from "./slices/catalog/catalogSlice";
 export const store = configureStore({
   reducer: { 
     cart: cartReducer, 
-    catalog: catalogReduser
+    catalog: catalogReduser.reducer
    },
 });
 
