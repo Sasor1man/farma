@@ -29,8 +29,9 @@ const LeftBar: FunctionComponent<LeftBarProps> = ({
 
   const checkedCheck = (brand: string) => checkboxes.includes(brand);
 
-  const numKeyValidate = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (["-", "+", ".", "e"].includes(e.key)) e.preventDefault();
+  const numKeyValidate = (value: string) => {
+    if (!/^\d*$/.test(value)) return;
+    return value === '' ? 0 : Number(value);
   };
 
   const updateBrand = (title: string) => {
@@ -89,29 +90,41 @@ const LeftBar: FunctionComponent<LeftBarProps> = ({
           <div className="price-input">
             <label htmlFor="low-price">От</label>
             <input
-              type="number"
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
               name="low-price"
               id="low-price"
               value={priceMin}
-              onChange={(e) => setFilter({
-                ...filter,
-                priceMin: Number(e.target.value)
-              })}
+              onChange={(e) => {
+                const num = numKeyValidate(e.target.value)
+                if (num) setFilter({
+                  ...filter,
+                  priceMin: num
+                });
+              }}
               // onBlur={submitNum}
-              onKeyDown={numKeyValidate}
+              // onKeyDown={numKeyValidate}
+              placeholder="0"
             />
             <label htmlFor="high-price">До</label>
             <input
-              type="number"
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
               name="high-price"
               id="high-price"
               value={priceMax}
-              onChange={(e) => setFilter({
-                ...filter,
-                priceMax: Number(e.target.value)
-              })}
+              onChange={(e) => {
+                const num = numKeyValidate(e.target.value)
+                if (num) setFilter({
+                  ...filter,
+                  priceMax: num
+                });
+              }}
               // onBlur={submitNum}
-              onKeyDown={numKeyValidate}
+              // onKeyDown={numKeyValidate}
+              placeholder="10000"
             />
           </div>
         </div>
